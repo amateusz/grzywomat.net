@@ -1,5 +1,5 @@
 ## Example Config file
-baseURL: "https://example.com"
+baseURL: "https://grzywomat.net"
 theme: "terminalcv"
 title: "terminalcv"
 
@@ -33,7 +33,6 @@ params:
   # promptColor: grey
   # promptSimbols: ":~$"
   # promptSimbolsColor: grey
-  # startxLocation: https://example.com
   # useLess: true
   listLS: true
   #exitLocation: "about:blank"
