@@ -1,1 +1,2 @@
-theme = 'terminalcv'
+# theme = 'terminalcv'
+theme = 're-terminal'

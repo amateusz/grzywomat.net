@@ -1,278 +1,120 @@
-## Example Config file
-baseURL: "https://grzywomat.net"
-theme: "terminalcv"
-title: "terminalcv"
+baseurl = "/"
+languageCode = "en-us"
+# Add it only if you keep the theme in the `themes` directory.
+# Remove it if you use the theme as a remote Hugo Module.
+theme = "re-terminal"
+pagination.pagerSize = 5
 
-params:
-  version: "2.0.0"
-  description: "My terminal cv"
-  blog: true
-  prompt:
-    core:
-      text: "user@terminalCV"
-      color: "pink"
-      before: "["
-      beforeColor: "red"
-      after: '\]'
-      afterColor: "red"
-      # separator: '-'
-    separator:
-      text: "-"
-      # color:
-    path:
-      before: "["
-      beforeColor: "red"
-      text: "~/terminalcv"
-      color: "blue"
-      after: '\]'
-      afterColor: "red"
-    extra:
-      text: ": "
-      color: "orange"
+[params]
+  # dir name of your main content (default is `content/posts`).
+  # the list of set content will show up on your index page (baseurl).
+  contentTypeName = "posts"
 
-  # promptColor: grey
-  # promptSimbols: ":~$"
-  # promptSimbolsColor: grey
-  # useLess: true
-  listLS: true
-  #exitLocation: "about:blank"
-  exitMessage: "[Session completed, the browserwindow can be safely closed]"
-  source: true
-  #use a ‎ (blank character) if your first character of the ascii art is a whitespace
-  greetingbannercolor: white
-  greetingbanner: |
-    ‎ _                      _             _  _______      __
-    | |                    (_)           | |/ ____\ \    / /
-    | |_ ___ _ __ _ __ ___  _ _ __   __ _| | |     \ \  / / 
-    | __/ _ \ '__| '_ ` _ \| | '_ \ / _` | | |      \ \/ /  
-    | ||  __/ |  | | | | | | | | | | (_| | | |____   \  /   
-     \__\___|_|  |_| |_| |_|_|_| |_|\__,_|_|\_____|   \/
+  # ["orange", "blue", "red", "green", "pink", "paper"]
+  themeColor = "orange"
 
-  greeting: |
-    Welcome to my online resume
+  # if you set this to 0, only submenu trigger will be visible
+  showMenuItems = 2
 
-    Type 'help' for a list of available commands
+  # show selector to switch language
+  showLanguageSelector = false
 
-  bootsequence: |
-    User request detected
-    Reserving Cloud Resources
-    ............................
-    Cloud Network ready
-    ........
-    Cloud Instance ready
-    .......................
-    Internet Breakout Ready, but Pong is preferred 
+  # set theme to full screen width
+  fullWidthTheme = false
 
-    Inititating CloudOS
-    CloudOS Kernel Version 1.4.2: Sat February 29 23:21:41 CEST 2025; root:xnu-1699.22.73~1/RELEASE_ARM_64
-    Loglevel = quiet
-    ......
-    ............
-    ..................
-    ........................
-    ..............................
-    ....................................
+  # center theme with default width
+  centerTheme = false
 
-    Copyright 1979, 1980, 1983, 1986, 1988, 1989, 1991, 1992, 1993, 1994
-    The Regents of the University of California. All rights reserved.
+  # if your resource directory contains an image called `cover.(jpg|png|webp)`,
+  # then the file will be used as a cover automatically.
+  # With this option you don't have to put the `cover` param in a front-matter.
+  autoCover = true
 
-    Copyright 2024, 2025
-    TerminalCV. MIT License (MIT)
+  # set post to show the last updated
+  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
+  showLastUpdated = false
 
-    [CloudOSBoot1]: ready
-    [CloudOSBoot2]: ready
-    [Webserver]: ready 
-    [HUGO]: ready
-    [TerminalCV]: ready
+  # set a custom favicon (default is a `themeColor` square)
+  # favicon = "favicon.ico"
 
-    Boot Complete, accepting user input.
+  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
+  # updatedDatePrefix = "Updated"
 
-  whois:
-    # settings:
-    #   useLess: true
-    details:
-      name: "John Doe"
-      profession: "Unknown"
-      location: "Somewhere"
-      email: "foo@someemail.com"
-      homelink: "https://myHomePage.com"
-      description: |
-        Here you can write something catchy about yourself
+  # set all headings to their default size (depending on browser settings)
+  # oneHeadingSize = true # default
 
-  social:
-    # settings:
-    #   useLess: true
-    #   hideName: true
-    details:
-      - name: "github"
-        url: "https://github.com"
-      - name: "facebook"
-        url: "https://facebook.com"
-      - name: "myspace"
-        url: "https://myspace.com"
-      - name: "hi5"
-        url: "https://www.hi5.com"
-      - name: "instagram"
-        url: "https://instagram.com"
-      - name: "Another social"
-        url: "https://anothersocial.com"
+  # whether to show a page's estimated reading time
+  # readingTime = false # default
 
-  work:
-    # settings:
-    #   useLess: true
-    details:
-      - jobTitle: Job With Red Title
-        color: red
-        company: "-"
-        location: somewhere
-        date: August 2010 - Present
-        description: Some description about this red title job
+  # whether to show a table of contents
+  # can be overridden in a page's front-matter
+  # Toc = false # default
 
-      - jobTitle: Job with purple title
-        color: purple
-        company: "-"
-        location: somewhere elese
-        date: July 2000  - July 2010
-        description: Some description about this purple job
+  # set title for the table of contents
+  # can be overridden in a page's front-matter
+  # TocTitle = "Table of Contents" # default
 
-      - jobTitle: Job with default color title
-        company: "-"
-        location: anywhere
-        date: July 2008 - 2010
-        description: Description about this default color job
 
-  education:
-    details:
-      - courseName: Red Color training
-        color: red
-        date: June 2019 - July 2019
-        description: Descrption about red color trianing
+  # you can set a banner on the top of the page with a call to action
+  # defaults: dismissible = false; URL is optional
+  # [params.banner]
+  # dismissible = false
+  # text = "Check it out on GitHub"
+  # url = "https://github.com/mirus-ua/hugo-theme-re-terminal"
 
-      - courseName: Default color training
-        date: Sept 2004 - Jun 2008
-        #description: There is no need for description
 
-  skills:
-    settings:
-      useLess: true
-    details:
-      - name: Skill 1
-        percentage: 90
-        Description: you can add a description
 
-      - name: Skill 2
-        percentage: 30
-        #description: or you can leave it comented
+[params.twitter]
+  # set Twitter handles for Twitter cards
+  # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
+  # do not include @
+  creator = ""
+  site = ""
 
-      - name: Skill 3
-        color: blue
-        percentage: 50
-        description: Skill names can have colors too
+[languages]
+  [languages.en.params]
+    languageName = "English"
+    title = "re-Terminal"
+    subtitle = "A simple, retro theme for Hugo"
+    owner = ""
+    keywords = ""
+    copyright = ""
+    menuMore = "Show more"
+    readMore = "Read more"
+    readOtherPosts = "Read other posts"
+    newerPosts = "Newer posts"
+    olderPosts = "Older posts"
+    missingContentMessage = "Page not found..."
+    missingBackButtonLabel = "Back to home page"
+    minuteReadingTime = "min read"
+    words = "words"
 
-  softskills:
-    # settings:
-    #   useLess: true
-    details:
-      - name: SoftSkill 1
-        color: red
-        percentage: 80
-        #description:
+    [languages.en.params.logo]
+      logoText = "re-Terminal"
+      logoHomeLink = "/"
 
-      - name: SoftSkill 2
-        #color:
-        percentage: 90
-        description: Description
+    [languages.en.menu]
+      # Submenus is available since v2.1.0
+      # [[languages.en.menu.main]]
+      #   identifier = "submenuParent"
+      #   name = "Submenu"
+      # [[languages.en.menu.main]]
+      #   parent = "submenuParent"
+      #   identifier = "anItem"
+      #   name = "AnItem"
+      [[languages.en.menu.main]]
+        identifier = "about"
+        name = "About"
+        url = "/about"
+      [[languages.en.menu.main]]
+        identifier = "showcase"
+        name = "Showcase"
+        url = "/showcase"
 
-  languages:
-    # settings:
-    #   useLess: true
-    details:
-      - name: English
-        color: Blue
-        percentage: 50
-        #description:
-
-      - name: Gibberish
-        percentage: 100
-        description: pasghettipigglywiggly
-
-  projects:
-    # settings:
-    #   useLess: true
-    details:
-      - title: Project Red
-        color: red
-        date: since 2019
-        link: https://example.com
-        description: Describing red stuff
-
-      - title: Project Blue
-        color: blue
-        date: since 2016
-        link: https://example.com/blue
-        #description: nothing to describe
-
-      - title: Project Default
-        date: Since 2017
-        link: https://example.com/default
-        #description: not there either
-
-  publications:
-    # settings:
-    #   useLess: true
-    details:
-      - title: "Machine Learning for Terminal Enthusiasts"
-        color: green
-        authors: "John Doe, Jane Smith"
-        venue: "Journal of Terminal Computing, Vol. 42"
-        date: "2025"
-        link: "https://example.com/paper1"
-        description: "A comprehensive study on ML applications in terminal interfaces"
-
-      - title: "The Art of ASCII: Modern Approaches"
-        color: blue
-        authors: "John Doe"
-        venue: "International Conference on Text-Based Interfaces (ICTBI)"
-        date: "2024"
-        link: "https://example.com/paper2"
-        #description:
-
-      - title: "Understanding Command Line User Experience"
-        authors: "John Doe, Bob Wilson, Alice Brown"
-        venue: "ACM Transactions on Human-Computer Interaction"
-        date: "2023"
-        #link:
-        description: "Research on improving CLI usability and accessibility"
-
-  certifications:
-    # settings:
-    #   useLess: true
-    details:
-      - certName: Example Cert
-        company: Example Certifying Company
-        date: Date of Completion
-        badge: https://www.link.to.badge
-        #description: Lorem Ipsum
-
-  misc:
-    # settings:
-    #   useLess: true
-    commandName: newcommand
-    title: "This Section can have a different command name"
-    titleColor: teal
-    content: |
-      Here the title and the content can have different colors
-      The content can be multi
-
-      line
-
-      And spaces       will be respected as well
-      This section will have the default command: misc
-      but you can name it something else with the property
-      commandName: <String>
-      Give it a shot and try and uncomment the line 
-      commandName: newcommand
-      now instead of misc you can execute the newcommand for this section
-      Auto completion will know it too! :D
-
-    contentColor: orange
+[module]
+  # In case you would like to make changes to the theme and keep it locally in you repository,
+  # uncomment the line below (and correct the local path if necessary).
+  # --
+  # replacements = "github.com/mirus-ua/hugo-theme-re-terminal -> themes/re-terminal"
+[[module.imports]]
+  path = 'github.com/mirus-ua/hugo-theme-re-terminal'
