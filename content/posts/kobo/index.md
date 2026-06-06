@@ -1,3 +1,10 @@
+---
+date: 2026-05-15T15:21:54+02:00
+draft: true
+title: Repairing dead Kobo Libre 2
+weight: 10
+---
+
 booting with battery not connected
 
 ```
