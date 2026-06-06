@@ -1,4 +1,4 @@
-baseurl = "/"
+# baseurl = "/" # set by github pages
 # Add it only if you keep the theme in the `themes` directory.
 # Remove it if you use the theme as a remote Hugo Module.
 #theme = "re-terminal"

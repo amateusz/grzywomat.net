@@ -43,6 +43,11 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+      - name: Remove "About" baner from a theme
+        run: |
+          pwd
+          ls -al
+          sed -i '/<h1>About<\/h1>/,/<br\/>/d' themes/hugo-theme-console/layouts/index.html
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
