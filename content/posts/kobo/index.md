@@ -1,11 +1,86 @@
 ---
 date: 2026-05-15T15:21:54+02:00
-draft: true
+draft: false
 title: Repairing dead Kobo Libre 2
 weight: 10
+summary: Do all Kobo e-book readers have microSD card inside ??
+description: Steps to revive a Kobo e-book reader which fails to boot
 ---
 
-booting with battery not connected
+## The patient 
+The patient is **Kobo Libre 2**, an monochrome e-ink e-book reader from Kobo, Rakuten.
+A friend asked me to rapair it.
+### The symptops
+`when`: plugged to USB charger or the power button is pressed
+
+`do`: the device blinks the screen with a full refresh (black flash) and then a small white LED on the front panel start to blink indefinietly.
+Upon holding the power button (rear) for some 10 sec. the LED stops to blink.
+
+So this made me think that it fails at an early stage, anywhere from bootloader to early OS boot (screen not initialized yet).
+
+### Diagnosis
+I pry-opened the device. It's quite funny inside: a metalic frame with a small battery in the middle. I guess a bigger battery is not needed and would make the reader heavier.
+_But what is there in the middle of the PCB_ ?? Apparently the device runs off of an microSD card. If you have ever played with a Raspberry Pi, you know that microSD used to be very bad to run a Linux from. These days they come in A2 and what-a-not IOPS ratings, but still.
+
+Searching the internet, there are already helpful and more detailed write-ups on this very problem [(sources)](#sources)
+
+
+The only thing I missed is documenting the serial wiring, so here it is:
+I soldered 2.54mm 4 pin connector to the pins in the corner.
+
+("pin 4" is closest to the edge and next to a screw)
+
+|pin 1|pin 2|pin 3|pin 4|
+|:-:|:-:|:-:|:-:|
+|GND|Kobo Rx |Kobo Tx |Vcc |
+|Black|–|Purple|–|
+
+![Kobo under surgery](pictures/kobo_libre_2_debugging.jpg)
+
+So what happened is that the SD card failed, and the device could not boot (detailed logs below)
+```
+...
+Buffer I/O error on dev mmcblk0p1, logical block 369, lost async page write
+...
+mmcblk0: card_busy_detect: error sending status cmd, status 0x80900
+EXT4-fs (mmcblk0p1): error loading journal
+Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,1)
+---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,1)
+```
+
+`dd` of this card onto a new one proved to be sufficient. The device booted exactly where it left of, being in the middle of a book! Solved
+
+### Details on the file system
+There are 3 partitions, `fdisk` dump:
+
+```
+Disk ./microSD_kobo32.img: 29.72 GiB, 31914983424 bytes, 62333952 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x39183845
+
+Device                Boot   Start      End  Sectors  Size Id Type       | Mounts as
+./microSD_kobo32.img1        49152   573440   524289  256M 83 Linux      | rootfs
+./microSD_kobo32.img2       573441  1359873   786433  384M 83 Linux      | recoveryfs
+./microSD_kobo32.img3      1359874 62301182 60941309 29.1G  b W95 FAT32  | KOBOeReader
+```
+
+The FAT `KOBOeReader` partition is just storage for user's books, so its size is not crucial. This way you could also expand your storage by just migrating to a bigger SD card. This should also alleviate your current SD card failing..
+
+Reading [<sources>](#sources) I learned that there is a recovery image of the rootfs.
+If your SD card failed completly (no read-out) or don't have a card at all, here is your minimum setup:
+- recovery fs archive
+- partitioning info
+- serial number
+
+Partition your new, empty SD card according to above table, extract the recovery archive as onto `rootfs` partition and update the serial number in the memory blocks of the SD card (see sources).
+
+---
+
+## Boot Logs
+### Booting with battery not connected
 
 ```
 U-Boot 2016.03-00128-gb3c2551794 (Nov 11 2022 - 15:50:26 +0800)
@@ -137,7 +212,7 @@ cpu cpu0: dev_pm_opp_get_opp_count: device OPP not found (-19)
 ␀␀␀␀␀�␂␀␀␀␀␀
 ```
 
-booting, SD card with (write) problems
+### Booting, SD card with (write) problems
 ```
 Starting kernel ...
 
@@ -416,7 +491,7 @@ Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,1)
 ---[ end Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(179,1)
 ```
 
-booting, happy SD card:
+### Booting with happy SD card:
 ```
 Starting kernel ...
 
@@ -531,8 +606,7 @@ dhcpcd[1503]: forking to background
 dhcpcd[1503]: forked to background, child pid 1513
 ```
 
-https://libreplanet.org/wiki/Group:Hardware/Computers/e-readers/Kobo/Aura_H2O_Edition_2/boot_log_Bienvenue_sur_Kobo_!
-
-https://39labs.org/blog/reviving-a-dead-kobo-libra-2/
-
+## Sources
+- [https://libreplanet.org/wiki/Group:Hardware/Computers/e-readers/Kobo/Aura_H2O_Edition_2/boot_log_Bienvenue_sur_Kobo_!](https://libreplanet.org/wiki/Group:Hardware/Computers/e-readers/Kobo/Aura_H2O_Edition_2/boot_log_Bienvenue_sur_Kobo_!)
+- https://39labs.org/blog/reviving-a-dead-kobo-libra-2/
 
