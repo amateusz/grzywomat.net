@@ -1,9 +1,8 @@
 {{ define "main" }}
 
-<h1>Latest posts</h1>
-
-<div class="posts-list">
 {{ with .Site.GetPage "/posts" }}
+<h1>Latest posts</h1>
+<div class="posts-list">
     {{ range first 3 (sort .Pages "Date" "desc" (where .Pages ".Params.private" "!=" true))}}
         <div class="post">
             <p>
@@ -13,13 +12,14 @@
             </p>
         </div>    
     {{ end }}
-{{ end }}
 </div>
+{{ else }}
+<h1>(No posts)</h1>
+{{ end }}
 
-<h1>Latest photos</h1>
-
-<div class="image-grid">
 {{ with .Site.GetPage "/photos" }}
+<h1>Latest photos</h1>
+<div class="image-grid">
     {{ range first 3 (sort .Pages "Date" "desc")}}
         <a href="{{ .Permalink }}" title="{{ .Title }}">
         {{ $image := .Page.Resources.GetMatch .Params.image }}
@@ -29,7 +29,7 @@
         {{end}}
         </a>
     {{ end }}
-{{ end }}
 </div>
+{{ end }}
 
 {{ end }}
