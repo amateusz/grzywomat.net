@@ -69,7 +69,7 @@ Device                Boot   Start      End  Sectors  Size Id Type       | Mount
 
 The FAT `KOBOeReader` partition is just storage for user's books, so its size is not crucial. This way you could also expand your storage by just migrating to a bigger SD card. This should also alleviate your current SD card failing..
 
-Reading [<sources>](#sources) I learned that there is a recovery image of the rootfs.
+Reading [\<sources\>](#sources) I learned that there is a recovery image of the rootfs.
 If your SD card failed completly (no read-out) or don't have a card at all, here is your minimum setup:
 - recovery fs archive
 - partitioning info
