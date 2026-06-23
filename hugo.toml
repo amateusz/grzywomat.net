@@ -6,7 +6,14 @@ theme = "hugo-theme-console"
 title = "grzywomat.net"
 pagination.pagerSize = 5
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 [params]
+  author = "Mateusz Grzywacz"
+
   # Cutting off the page title to two chars for mobile (console-demo -> co)
   titleCutting = false
 
