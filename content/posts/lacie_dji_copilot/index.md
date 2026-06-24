@@ -44,6 +44,35 @@ The battery is a 2 cell (7.4V nom.) LiPol battery, and it has failed. One of the
 
 I fashioned a replacement battery from my stock, but unfortunately it is quite bad as well, so the device browns-out when there is a phone charging off of it.
 I soldered the new cells in a 2S arrangement with 3 terminals and reused the original BMS board. It has contacts for B+ (7.4V), 2×BM (3.7V) and B- (0V). 
+
+---
+### Battery specification
+
+Factory battery consists of 2 cells rated:
+```
+Model: L0691-LF  2ICP5/54/69
+Rating: 7.7V / 2550mAh / 19.6Wh
+Charging Limited Voltage: 8.8V
+Manufacturer name: EVE Energy Co., Ltd.
+Manufacturing date: 2018.25 Rev E
+Country of oriin: China
+```
+So a single cell is 3.7V 2550mAh
+
+
+| battery cell dimensions | width [mm] | length | height |
+| - | -: | -: | -: |
+| factory single cell dimensions | 54.1 | 68.8 | 4.7 |
+| maximum 2-cell pack dimensions | ~110  | ~70   | 6.5 |
+<div style="text-align: center;">
+where <i>width</i> is the dimension of 1 or 2 cells next to each other.
+</div>
+<br>
+
+I tried to make a battery pack out of MacBook cells, but it just would not fit (height especially). Do not try to fit any bigger there. I stopped when I still could. Forcing a LiPol battery does not feel right, especially that is should have some space to gas up once it fails.. Or shouldn't it?
+
+---
+
 After connecting the battery nothing happened, even when the battery was externally charger (with a lab power supply).
 
 ## Powering on
@@ -68,7 +97,6 @@ Now, **this is stupid**. I understand that the device needs an internal clock to
 I'm actually curious what kind of USB communication happens between LaCie (host) and the mobile device (Android).
 
 ### Findings (loose):
- - maximum dimensions for the battey are 6.5×66×106mm. Do not try to fit any bigger there. I<nbsp>tried and stopped while I could.
  - the app cannot be installed on iOS device in 2026 - neither officially nor I could find an .ipk 
  - the app can be installed on a Android phone, I provide the APK found on the internet
  - custom proprietary cable for mode 1.b. is actually a microUSB host cable (OTG), with device plug on the other end (USB C, microUSB, Lightning?)
