@@ -96,14 +96,47 @@ Once powered the device **begs for an app like a nestling for food**. You can no
 Now, **this is stupid**. I understand that the device needs an internal clock to be synchronized, but this could still be done with a button, even if just a single one.
 I'm actually curious what kind of USB communication happens between LaCie (host) and the mobile device (Android).
 
-### Findings (loose):
- - the app cannot be installed on iOS device in 2026 - neither officially nor I could find an .ipk 
+# Findings
+Looking up the battery model [I found out](https://www.reddit.com/r/batteries/comments/1igy0p0/help_finding_replacement_77v_lion/), that there is actually a bare LaCie (non-DJI) device like this! 
+
+It is called "**LaCie Rugged BOSS SSD**" and it seems to have been way more popular.
+<br>Basically my "LaCie DJI Copilot" is "LaCie Rugged BOSS SSD" but in grey, with 2TB HDD and with different start-up logo.
+And the apps are bascially the same, but different. They bothered to release 2 apps which differ just in branding. The last released version is `1.00.45.19` for both and this is what I used to "Set The Clock" of the device. You can download the APK [here](files/Copilot_BOSS_01.00.45.19_APKPure.apk).
+
+Also, you can see a lot of details in [this review](https://realhardwarereviews.com/lacie-rugged-boss-ssd-review/3/#split_content). 
+
+## Mode 1.b Cable
+Since I couldn't install the magical app on an iPhone I needed a USB C cable for Android phone. By trial and error I discovered that their "custom" cables for mode 1.b. is actually
+- microUSB host cable (OTG)
+- with device plug on the other end (USB C / microUSB / Lightning)
+
+Once I installed the app and assembled the cable, it worked, though the detection took a while and I needed to accept some Android pop-up about "File Transfer" USB mode.
+
+
+<div style="text-align: center;">
+<img style="height: auto; width: min(70%, 400px); display: block; margin: auto; max-width: 100%; object-fit: cover;" src="pictures/Screenshot_20260624_165410_com.android.systemui.jpg" />
+<i>Trying to use the "LaCie Rugged BOSS" app with the LaCie Copilot DJI device. They must recognize some ID to be "wrong"</i>
+</div>
+<br>
+
+<div style="text-align: center;">
+<img style="height: auto; width: min(50%, 300px); display: block; margin: auto; max-width: 100%; object-fit: cover;" src="pictures/Screenshot_20260624_165652_com.huawei.android.launcher.jpg" />
+<i>One app in two different colorways..<br>I wish I had found the orange one</i>
+</div>
+<br>
+
+
+
+## Findings continued (loose):
+ - the app cannot be installed on iOS device in 2026 - neither officially nor I could find an .ipa
  - the app can be installed on a Android phone, I provide the APK found on the internet
  - custom proprietary cable for mode 1.b. is actually a microUSB host cable (OTG), with device plug on the other end (USB C, microUSB, Lightning?)
  - it does **not** charge through USB C ([mode 2.](#2.-Connected-to-a-computer-via-USB-device)) when the battery is fully dead
  - barrel jack connector is 2.5×0.8mm, voltage is 12V tip positive
  - when you connect a battery, the device needs to be revived, even if the battery is full by connecting the barrel jack charger
+ - I changed the HDD to 500GB and it works fine, the device does not complain
 
+ 
 #### More pictures
 <div style="text-align: center;">
 <img style="height: auto; max-width: 100%; object-fit: cover;" src="pictures/battery_fg.JPEG" />
