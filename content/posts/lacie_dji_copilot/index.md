@@ -15,14 +15,16 @@ First let me introduce this device, as it's a dead product with not many mention
 </div>
 
 # LaCie DJI Copilot
-It is a backup station for content creators made by LaCie and sold around 2018-2021. It was intended for drone fotage, but I don't see anything special about it besides "DJI" branding. It has a 2TB hard drive inside. 
+It is a backup station for content creators made by LaCie and sold around 2018-2021. It was intended for drone fotage, but I don't see anything special about it besides "DJI" branding. It has a 2TB hard drive inside. When new, it costed around [350€](https://tweakers.net/pricewatch/1130421/lacie-dji-copilot-boss-2tb-grijs.html) making it quite a premium, niche tool. I have a hunch that it failed commercially.
 
-It is not so easy to understand how to use it. I think it's a really cool device that they made, but challenging grasp how to use it.
-It also has a sleep mode, which makes it more complicated.
-I try to think of it as a linux computer with a attached storage and host/device ports.
+It is not so easy to understand how to use it. You can try to read [the manual](https://www.seagate.com/content/dam/seagate/migrated-assets/www-content/manuals/lacie.com/pdf/lacie.com-en_GB.pdf), but it helps only a bit.
+I think it's a really cool device, that they made, but it's a bit difficult to grasp how to use it.
+(It also has a sleep mode, which makes it more complicated)
+
+For me it helps to think of it as a Linux computer with an attached storage and host/device ports.
 
 ## Modes
-It has 3 different modes and it has many hardware ports. Each port is supposed to be used in a given way, otherwise it's "not tested/unsupported".
+It has many hardware ports and each port is supposed to be used in a given way, otherwise it's "not tested/unsupported". Using given ports is coupled with modes, which there are 3 of, according to me:
 
 ### 1.a. Stand-alone
 In this mode you can back-up SD card and/or a USB storage onto the internal 2TB drive. It is a full copy, not incremental you can only start it and stop it.
@@ -51,14 +53,14 @@ I figured, that the device not only requires a healthy battery to power on, but 
 <img style="height: auto; width: min(100%, 600px); display: block; margin: auto; max-width: 100%; object-fit: cover;" src="pictures/charging_clips.JPEG" />
 <i>I didn't have a correct power adaptor, so I used aligator clips.<br>The red one holds onto a central pin of the barrel socket</i>
 </div>
+<br>
 
-Once powered the device begs for an app like a nestling for food. You can not go futher.
+Once powered the device begs for an app like a nestling for food. You can not go further.
 
 
 <div style="display: flex; gap: 10px; text-align: center;">
 <img style="height: auto; width: min(100%, 300px); max-width: 100%; flex: 1 1 auto; object-fit: cover;" src="pictures/connect_app_overview_straight.JPEG" />
 <img style="height: auto; width: min(100%, 300px); max-width: 100%; flex: 1 1 auto; object-fit: cover;" src="pictures/connect_app_overview_angle.JPEG" />
-
 </div>
 
 
